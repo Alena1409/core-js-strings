@@ -38,8 +38,8 @@ function getStringLength(value) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return typeof value === 'string' || value instanceof String;
 }
 
 /**
@@ -185,8 +185,11 @@ function removeLastOccurrences(str, value) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  if (str === '') return 0;
+  if (!str) return 0;
+  const arr = str.split('').map((item) => item.charCodeAt());
+  return arr.reduce((acc, val) => acc + val, 0);
 }
 
 /**
@@ -317,8 +320,9 @@ function countVowels(str) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const str1 = str.toLowerCase().replace(/[ ?!,]/g, '');
+  return str1 === str1.split('').reverse().join('');
 }
 
 /**
@@ -333,8 +337,9 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const arr = sentence.split(' ').sort((a, b) => b.length - a.length);
+  return arr[0];
 }
 
 /**
