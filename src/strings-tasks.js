@@ -233,11 +233,9 @@ function endsWith(str, substr) {
  *   formatTime(0, 0) => "00:00"
  */
 function formatTime(minutes, seconds) {
-  const nul = '0';
-  const min = minutes < 10 ? nul.concat(minutes) : minutes;
-  const sec = seconds < 10 ? nul.concat(seconds) : seconds;
-  const a = min.concat(':');
-  return a.concat(sec);
+  const min = String(minutes);
+  const sec = String(seconds);
+  return `${min.padStart(2, '0')}:${sec.padStart(2, '0')}`;
 }
 
 /**
@@ -447,8 +445,8 @@ function unbracketTag(str) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
